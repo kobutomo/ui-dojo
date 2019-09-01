@@ -41,4 +41,4 @@ const Slider: React.FC<props> = (props: props) => {
   )
 }
 
-// export default Slider
+export default Slider
