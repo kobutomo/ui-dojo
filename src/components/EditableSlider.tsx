@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
-import mod from "../scss/modules.module.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import mod from "../scss/modules/slider.module.scss"
 
 const timeout = (ms: number): Promise<void> => {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
@@ -50,7 +49,6 @@ const EditableSlider: React.FC<props> = (props: props) => {
                   removeImage(index)
                 }}
               >
-                <FontAwesomeIcon icon={"times"} />
               </div>
             </li>
           )

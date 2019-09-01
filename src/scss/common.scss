@@ -6,3 +6,20 @@
     margin: 0 auto;
   }
 }
+h2 {
+  line-height: 1.4;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 4px;
+    height: 100%;
+    top: 3px;
+    left: 0;
+    background-color: rgb(100, 101, 139);
+  }
+}

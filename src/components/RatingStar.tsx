@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from "../scss/modules.module.scss"
+import mod from "../scss/modules/ratingStar.module.scss"
 
 type props = {
   rating: number

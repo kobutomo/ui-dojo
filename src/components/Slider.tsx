@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import mod from "../scss/modules.module.scss"
+import mod from "../scss/modules/slider.module.scss"
 
 const timeout = (ms: number): Promise<void> => {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
@@ -41,4 +41,4 @@ const Slider: React.FC<props> = (props: props) => {
   )
 }
 
-export default Slider
+// export default Slider
