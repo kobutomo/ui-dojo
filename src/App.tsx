@@ -7,7 +7,7 @@ const App: React.FC = () => {
     <div className="App">
       <header>
         <h1>フルスクラッチUI道場</h1>
-        <p className="lead">いろんなUI（reactコンポーネント）をイチから頑張って作っていこう</p>
+        <p className="lead">いろんなUI（reactコンポーネント）を作ってムキムキになろう！</p>
       </header>
       <Home />
     </div>

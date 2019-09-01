@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import slider01 from "../img/slider01.jpg"
+import slider02 from "../img/slider02.jpg"
+import slider03 from "../img/slider03.jpg"
 import EditableRatingStar from '../components/EditableRatingStar'
 import RatingStar from '../components/RatingStar'
 import Slider from '../components/Slider'
 import EditableSlider from '../components/EditableSlider'
-import slider01 from "../img/slider01.jpg"
-import slider02 from "../img/slider02.jpg"
-import slider03 from "../img/slider03.jpg"
+import Switch from '../components/Switch'
 
 const Home: React.FC = () => {
   type state = {
@@ -40,7 +41,7 @@ const Home: React.FC = () => {
       <h2>評価とかする☆のやつ</h2>
       <div className="flex">
         <div className="star1">
-          <p>readonly</p>
+          <p className="subTit">readonly</p>
           <RatingStar
             rating={3.5}
           />
@@ -53,6 +54,9 @@ const Home: React.FC = () => {
           />
         </div>
       </div>
+      <h2>細かいパーツ</h2>
+      <p className="subTit">iOSのアレ</p>
+      <Switch />
     </div>
   )
 }
