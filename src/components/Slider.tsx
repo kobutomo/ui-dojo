@@ -17,8 +17,8 @@ const Slider: React.FC<props> = (props: props) => {
     const current = eyecatch.current
     if (current) {
       current.classList.remove(mod.eyecatchActive)
-      setSrc(src)
       await timeout(230)
+      setSrc(src)
       current.classList.add(mod.eyecatchActive)
     }
   }

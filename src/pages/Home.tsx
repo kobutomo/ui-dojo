@@ -33,22 +33,26 @@ const Home: React.FC = () => {
       <h2>画像ギャラリー(readonly)</h2>
       <Slider images={[slider01, slider02, slider03]} />
       <h2>画像ギャラリー(編集用)</h2>
-      <label>
-        <p>画像を追加</p>
-      </label>
       <EditableSlider
         images={state.images}
         setState={changeImages}
       />
-      <h2>☆のやつ(readonly)</h2>
-      <RatingStar
-        rating={3.5}
-      />
-      <h2>☆のやつ(編集用)</h2>
-      <EditableRatingStar
-        rating={state.rating}
-        changeRating={changeRating}
-      />
+      <h2>評価とかする☆のやつ</h2>
+      <div className="flex">
+        <div className="star1">
+          <p>readonly</p>
+          <RatingStar
+            rating={3.5}
+          />
+        </div>
+        <div className="star2">
+          <p>編集可能</p>
+          <EditableRatingStar
+            rating={state.rating}
+            changeRating={changeRating}
+          />
+        </div>
+      </div>
     </div>
   )
 }

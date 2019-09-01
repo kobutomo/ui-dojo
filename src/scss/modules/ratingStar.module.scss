@@ -61,9 +61,6 @@
   }
   @media (min-width: 1025px) {
     & > span {
-      &:hover span {
-        font-size: 2.5rem;
-      }
       span {
         cursor: pointer;
         user-select: none;
