@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/ui-dojo/static/css/main.17bd757c.chunk.css",
+    "main.js": "/ui-dojo/static/js/main.1817faf1.chunk.js",
+    "main.js.map": "/ui-dojo/static/js/main.1817faf1.chunk.js.map",
+    "runtime~main.js": "/ui-dojo/static/js/runtime~main.c66e70cc.js",
+    "runtime~main.js.map": "/ui-dojo/static/js/runtime~main.c66e70cc.js.map",
+    "static/js/2.bd6896d3.chunk.js": "/ui-dojo/static/js/2.bd6896d3.chunk.js",
+    "static/js/2.bd6896d3.chunk.js.map": "/ui-dojo/static/js/2.bd6896d3.chunk.js.map",
+    "index.html": "/ui-dojo/index.html",
+    "precache-manifest.490fef01ec5a1e93f0d113648c01913e.js": "/ui-dojo/precache-manifest.490fef01ec5a1e93f0d113648c01913e.js",
+    "service-worker.js": "/ui-dojo/service-worker.js",
+    "static/css/main.17bd757c.chunk.css.map": "/ui-dojo/static/css/main.17bd757c.chunk.css.map",
+    "static/media/slider01.jpg": "/ui-dojo/static/media/slider01.521b16f7.jpg",
+    "static/media/slider02.jpg": "/ui-dojo/static/media/slider02.c97a47a1.jpg",
+    "static/media/slider03.jpg": "/ui-dojo/static/media/slider03.21341982.jpg"
+  }
+}
