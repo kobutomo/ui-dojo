@@ -38,25 +38,26 @@ const Home: React.FC = () => {
         images={state.images}
         setState={changeImages}
       />
-      <h2>評価とかする☆のやつ</h2>
+      <h2>細かいパーツ</h2>
       <div className="flex">
         <div className="star1">
-          <p className="subTit">readonly</p>
+          <p className="subTit">☆のやつ（readonly）</p>
           <RatingStar
             rating={3.5}
           />
         </div>
         <div className="star2">
-          <p>編集可能</p>
+          <p>編集用</p>
           <EditableRatingStar
             rating={state.rating}
             changeRating={changeRating}
           />
         </div>
+        <div>
+          <p className="subTit">iOSのアレ</p>
+          <Switch />
+        </div>
       </div>
-      <h2>細かいパーツ</h2>
-      <p className="subTit">iOSのアレ</p>
-      <Switch />
     </div>
   )
 }
