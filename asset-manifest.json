@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/uidojo/static/css/main.17bd757c.chunk.css",
-    "main.js": "/uidojo/static/js/main.c0a4020d.chunk.js",
-    "main.js.map": "/uidojo/static/js/main.c0a4020d.chunk.js.map",
+    "main.css": "/uidojo/static/css/main.b02e1b52.chunk.css",
+    "main.js": "/uidojo/static/js/main.e4bbb91e.chunk.js",
+    "main.js.map": "/uidojo/static/js/main.e4bbb91e.chunk.js.map",
     "runtime~main.js": "/uidojo/static/js/runtime~main.818d7652.js",
     "runtime~main.js.map": "/uidojo/static/js/runtime~main.818d7652.js.map",
     "static/js/2.bd6896d3.chunk.js": "/uidojo/static/js/2.bd6896d3.chunk.js",
     "static/js/2.bd6896d3.chunk.js.map": "/uidojo/static/js/2.bd6896d3.chunk.js.map",
     "index.html": "/uidojo/index.html",
-    "precache-manifest.44e7b4c5445684aae259a236220c0a6a.js": "/uidojo/precache-manifest.44e7b4c5445684aae259a236220c0a6a.js",
+    "precache-manifest.d0ebc9bd80f3becc84b24cf92a7cf7ae.js": "/uidojo/precache-manifest.d0ebc9bd80f3becc84b24cf92a7cf7ae.js",
     "service-worker.js": "/uidojo/service-worker.js",
-    "static/css/main.17bd757c.chunk.css.map": "/uidojo/static/css/main.17bd757c.chunk.css.map",
+    "static/css/main.b02e1b52.chunk.css.map": "/uidojo/static/css/main.b02e1b52.chunk.css.map",
     "static/media/slider01.jpg": "/uidojo/static/media/slider01.521b16f7.jpg",
     "static/media/slider02.jpg": "/uidojo/static/media/slider02.c97a47a1.jpg",
     "static/media/slider03.jpg": "/uidojo/static/media/slider03.21341982.jpg"
