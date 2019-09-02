@@ -7,6 +7,7 @@ import RatingStar from '../components/RatingStar'
 import Slider from '../components/Slider'
 import EditableSlider from '../components/EditableSlider'
 import Switch from '../components/Switch'
+import Tabs from '../components/Tabs'
 
 const Home: React.FC = () => {
   type state = {
@@ -38,6 +39,8 @@ const Home: React.FC = () => {
         images={state.images}
         setState={changeImages}
       />
+      <h2>タブ切り替え</h2>
+      <Tabs />
       <h2>細かいパーツ</h2>
       <div className="flex">
         <div className="star1">
