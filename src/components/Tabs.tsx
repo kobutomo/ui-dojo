@@ -18,15 +18,13 @@ const Tabs: React.FC = () => {
     ]
   const content =
     [
-      <p>TAB01の中身😌</p>,
-      <p>TAB02の中身😙</p>,
-      <p>TAB03の中身😁</p>,
-      <p>TAB04の中身😎🙌</p>
+      <p>TAB01の中身<span role="img" aria-label="face">😌</span></p>,
+      <p>TAB02の中身<span role="img" aria-label="face">😙</span></p>,
+      <p>TAB03の中身<span role="img" aria-label="face">😁</span></p>,
+      <p>TAB04の中身<span role="img" aria-label="face">😎</span><span role="img" aria-label="hands">🙌</span></p>
     ]
 
-  type clickOrTouch = React.MouseEvent<HTMLLIElement, MouseEvent> | React.TouchEvent<HTMLLIElement>
-
-  const hundleClickTab = (e: clickOrTouch, index: number) => {
+  const hundleClickTab = (index: number) => {
     const prevIndex = state.currentTabIndex
     setState({ prevTabIndex: prevIndex, currentTabIndex: index })
   }
@@ -77,11 +75,11 @@ const Tabs: React.FC = () => {
               className={getClasses(index)}
               key={index}
               onClick={e => {
-                hundleClickTab(e, index)
+                hundleClickTab(index)
               }}
               onTouchEnd={e => {
                 e.preventDefault()
-                hundleClickTab(e, index)
+                hundleClickTab(index)
               }}
             >
               <span>{tab}</span>
@@ -98,7 +96,3 @@ const Tabs: React.FC = () => {
 }
 
 export default Tabs
-
-const timeout = (ms: number): Promise<void> => {
-  return new Promise<void>(resolve => setTimeout(resolve, ms))
-}
