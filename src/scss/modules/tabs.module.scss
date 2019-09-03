@@ -1,6 +1,7 @@
 .tabs {
   display: flex;
   margin-bottom: 30px;
+  justify-content: center;
   .item {
     position: relative;
     padding: 10px 10px;
@@ -56,4 +57,10 @@
       padding: 10px 15px;
     }
   }
+}
+
+.content {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
