@@ -8,6 +8,7 @@ import Slider from '../components/Slider'
 import EditableSlider from '../components/EditableSlider'
 import Switch from '../components/Switch'
 import Tabs from '../components/Tabs'
+import DatePicker from '../components/DatePicker'
 
 const Home: React.FC = () => {
   type state = {
@@ -41,6 +42,8 @@ const Home: React.FC = () => {
       />
       <h2>タブ切り替え</h2>
       <Tabs />
+      <h2>デートピッカー</h2>
+      <DatePicker />
       <h2>細かいパーツ</h2>
       <div className="flex">
         <div className="star1">
