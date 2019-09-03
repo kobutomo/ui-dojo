@@ -15,16 +15,19 @@ const DatePicker: React.FC = () => {
   const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
   const computeDates = () => {
-
+    // 月の最後の日
     const finalDateOfMonth =
       new Date(state.currentYear, state.currentMonth, 0).getDate()
 
+    // 1日の曜日
     const firstDayOfTheWeek =
       new Date(state.currentYear, state.currentMonth - 1, 1).getDay()
 
+    // 空白を含む日付の配列を取得
     const dates = Array(35).fill(null).map((_, i) => {
       // 正規化した日付
       const normarizeDate = i - firstDayOfTheWeek + 1
+
       // 曜日は0が日曜日なので例えばfirstDayOfTheWeekが
       // 水曜日で3のとき、0 <= i < 3の範囲で""を返す。
       // => 一週目の日月火が空白になる。
@@ -39,9 +42,12 @@ const DatePicker: React.FC = () => {
     return dates
   }
 
+  // 表示月を変更する処理
   const changeMonth = (msg: "prev" | "next") => {
     setState(prevState => {
+      // 前の月ボタン
       if (msg === "prev") {
+        // 表示している月が1月だったら0月ではなく12月にして年を1年減らす
         if (prevState.currentMonth === 1) {
           return {
             ...state,
@@ -102,7 +108,9 @@ const DatePicker: React.FC = () => {
         </div>
         <div className={mod.date}>
           {computeDates().map((date, index) => {
+            // 日付がstate.currentDateと同じだったらクラスを付ける
             const className = Number(date) === state.currentDate ? mod.current : undefined
+
             return (
               <p
                 key={index}
