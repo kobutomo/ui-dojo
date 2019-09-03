@@ -24,7 +24,7 @@ const DatePicker: React.FC = () => {
       new Date(state.currentYear, state.currentMonth - 1, 1).getDay()
 
     // 空白を含む日付の配列を取得
-    const dates = Array(35).fill(null).map((_, i) => {
+    const dates = Array(42).fill(null).map((_, i) => {
       // 正規化した日付
       const normarizeDate = i - firstDayOfTheWeek + 1
 
