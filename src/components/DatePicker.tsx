@@ -14,12 +14,13 @@ const DatePicker: React.FC = () => {
 
   const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
+  // 選択された月の日数と曜日を計算する関数
   const computeDates = () => {
-    // 月の最後の日
+    // 月の最後の日 ex.30
     const finalDateOfMonth =
       new Date(state.currentYear, state.currentMonth, 0).getDate()
 
-    // 1日の曜日
+    // 1日の曜日 0~6 の範囲のnumber型
     const firstDayOfTheWeek =
       new Date(state.currentYear, state.currentMonth - 1, 1).getDay()
 
@@ -29,15 +30,13 @@ const DatePicker: React.FC = () => {
       const normarizeDate = i - firstDayOfTheWeek + 1
 
       // 曜日は0が日曜日なので例えばfirstDayOfTheWeekが
-      // 水曜日で3のとき、0 <= i < 3の範囲で""を返す。
-      // => 一週目の日月火が空白になる。
-      const isBeforeFirst = i < firstDayOfTheWeek
-      const isAfterFinal = normarizeDate > finalDateOfMonth
+      // 3(水曜日)のとき、0 <= i < 3の範囲で""を返す。
+      // => 一週目の日月火のマスが空白になる。
+      const isOutOfMonth = normarizeDate <= 0 || normarizeDate > finalDateOfMonth
 
-      if (isBeforeFirst || isAfterFinal) {
-        return ""
-      }
-      else return (normarizeDate).toString()
+      // i番目のマスがその月の範囲外の場合空文字列を返す
+      return isOutOfMonth ?
+        "" : normarizeDate.toString()
     })
     return dates
   }
