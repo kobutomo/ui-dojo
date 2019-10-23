@@ -9,6 +9,8 @@ import EditableSlider from '../components/EditableSlider'
 import Switch from '../components/Switch'
 import Tabs from '../components/Tabs'
 import DatePicker from '../components/DatePicker'
+import TwitterClone from '../components/TwitterClone'
+import Tetris from '../components/Tetris'
 
 const Home: React.FC = () => {
   type state = {
@@ -33,6 +35,13 @@ const Home: React.FC = () => {
 
   return (
     <div id="container">
+      <h2>テトリス</h2>
+      <Tetris
+        fieldHeight={20}
+        fieldWidth={10}
+      />
+      <h2>ツイッターのエディタークローン<br/>（メンション、ハッシュタグなど対応）</h2>
+      <TwitterClone />
       <h2>画像ギャラリー(readonly)</h2>
       <Slider images={[slider01, slider02, slider03]} />
       <h2>画像ギャラリー(編集用)</h2>
