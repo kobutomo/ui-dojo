@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7403a57f1f6961846324e3b737a0f6b5",
+    "revision": "cba12f28f02c66778d6c8cd03628f145",
     "url": "/uidojo/index.html"
   },
   {
-    "revision": "d18fe5f76364fdbe54bb",
-    "url": "/uidojo/static/css/main.cd3c630e.chunk.css"
+    "revision": "e1580efcb47e0acd4717",
+    "url": "/uidojo/static/css/main.6f11a854.chunk.css"
   },
   {
-    "revision": "8b3eee70cde1c08110e8",
-    "url": "/uidojo/static/js/2.a9b820dc.chunk.js"
+    "revision": "bb441b5a3dc40efa653b",
+    "url": "/uidojo/static/js/2.1e3e13c3.chunk.js"
   },
   {
-    "revision": "d18fe5f76364fdbe54bb",
-    "url": "/uidojo/static/js/main.a617e983.chunk.js"
+    "revision": "e1580efcb47e0acd4717",
+    "url": "/uidojo/static/js/main.7d2252ad.chunk.js"
   },
   {
-    "revision": "3c1ea82cfd7f01cb25dc",
-    "url": "/uidojo/static/js/runtime~main.818d7652.js"
+    "revision": "0f54592b7a2e40c349b4",
+    "url": "/uidojo/static/js/runtime-main.d44048c7.js"
   },
   {
     "revision": "78a28b08e7036525ae6f45a316c9e528",
@@ -34,6 +34,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "afac0cf8986bcac379dcdd2cc13501bd",
     "url": "/uidojo/static/media/FiraCode-Regular.afac0cf8.ttf"
+  },
+  {
+    "revision": "86dd7cb77e5a4437586716eb82f9c5f8",
+    "url": "/uidojo/static/media/ico_image.86dd7cb7.svg"
   },
   {
     "revision": "521b16f789962e53790d31962273a4d4",
