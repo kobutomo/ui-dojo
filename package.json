@@ -9,6 +9,8 @@
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "@types/styled-components": "^4.1.19",
+    "draft-js": "^0.11.1",
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.2.0",
@@ -38,7 +40,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
+    "@types/draft-js": "^0.10.37",
     "node-sass": "^4.12.0"
   }
 }
