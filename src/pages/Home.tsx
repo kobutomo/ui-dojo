@@ -35,11 +35,11 @@ const Home: React.FC = () => {
 
   return (
     <div id="container">
-      <h2>テトリス</h2>
+      {/* <h2>テトリス</h2>
       <Tetris
         fieldHeight={20}
         fieldWidth={10}
-      />
+      /> */}
       <h2>ツイッターのエディタークローン<br/>（メンション、ハッシュタグなど対応）</h2>
       <TwitterClone />
       <h2>画像ギャラリー(readonly)</h2>

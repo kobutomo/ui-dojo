@@ -1,132 +1,58 @@
-import React, { useState } from 'react'
+import React from 'react'
 import mod from "../scss/modules/datePicker.module.scss"
+import useCalendar from "../hooks/useClendar"
+
+const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 const DatePicker: React.FC = () => {
 
-  const today = new Date(Date.now())
-
-  const initialState = {
-    currentYear: today.getFullYear(),
-    currentMonth: today.getMonth() + 1,
-    currentDate: today.getDate()
-  }
-  const [state, setState] = useState(initialState)
-
-  const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
-  // 選択された月の日数と曜日を計算する関数
-  const computeDates = () => {
-    // 月の最後の日 ex.30
-    const finalDateOfMonth =
-      new Date(state.currentYear, state.currentMonth, 0).getDate()
-
-    // 1日の曜日 0~6 の範囲のnumber型
-    const firstDayOfTheWeek =
-      new Date(state.currentYear, state.currentMonth - 1, 1).getDay()
-
-    // 空白を含む日付の配列を取得
-    const dates = Array(42).fill(null).map((_, i) => {
-      // 正規化した日付
-      const normarizeDate = i - firstDayOfTheWeek + 1
-
-      // 曜日は0が日曜日なので例えばfirstDayOfTheWeekが
-      // 3(水曜日)のとき、0 <= i < 3の範囲で""を返す。
-      // => 一週目の日月火のマスが空白になる。
-      const isOutOfMonth = normarizeDate <= 0 || normarizeDate > finalDateOfMonth
-
-      // i番目のマスがその月の範囲外の場合空文字列を返す
-      return isOutOfMonth ?
-        "" : normarizeDate.toString()
-    })
-    return dates
-  }
-
-  // 表示月を変更する処理
-  const changeMonth = (msg: "prev" | "next") => {
-    setState(prevState => {
-      // 前の月ボタン
-      if (msg === "prev") {
-        // 表示している月が1月だったら0月ではなく12月にして年を1年減らす
-        if (prevState.currentMonth === 1) {
-          return {
-            ...state,
-            currentYear: prevState.currentYear - 1,
-            currentMonth: 12
-          }
-        }
-        else {
-          return {
-            ...state,
-            currentMonth: prevState.currentMonth - 1
-          }
-        }
-      }
-
-      else if (msg === "next") {
-        if (prevState.currentMonth === 12) {
-          return {
-            ...state,
-            currentYear: prevState.currentYear + 1,
-            currentMonth: 1
-          }
-        }
-        else {
-          return {
-            ...state,
-            currentMonth: prevState.currentMonth + 1
-          }
-        }
-      }
-      else return state
-    })
-  }
-
+  const [currentYear, currentMonth, currentDate, currentDates, hundleChangeMonth, hundleClickDate] = useCalendar()
 
   return (
     <div className={mod.datePicker}>
       <div className={mod.box}>
         <p
           className={mod.btn + " " + mod.prev}
-          onClick={() => changeMonth("prev")}
+          onClick={() => hundleChangeMonth("prev")}
           onTouchEnd={e => {
             e.preventDefault()
-            changeMonth("prev")
+            hundleChangeMonth("prev")
           }}
         ><span></span></p>
         <p
           className={mod.btn + " " + mod.next}
-          onClick={() => changeMonth("next")}
+          onClick={() => hundleChangeMonth("next")}
           onTouchEnd={e => {
             e.preventDefault()
-            changeMonth("next")
+            hundleChangeMonth("next")
           }}
         ><span></span></p>
-        <p className={mod.year}><span>{state.currentMonth}</span> {state.currentYear}</p>
+        <p className={mod.year}><span>{currentMonth}</span> {currentYear}</p>
         <div className={mod.week}>
           {dayOfTheWeek.map((day, index) => <p key={index}>{day}</p>)}
         </div>
         <div className={mod.date}>
-          {computeDates().map((date, index) => {
-            // 日付がstate.currentDateと同じだったらクラスを付ける
-            const className = Number(date) === state.currentDate ? mod.current : undefined
+          {currentDates.map((date, index) => {
+            // 日付がcurrentDateと同じだったらクラスを付ける
+            const className = parseInt(date) === currentDate ? mod.current : undefined
 
             return (
               <p
                 key={index}
                 className={className}
                 onClick={e => {
-                  setState({ ...state, currentDate: Number(date) })
+                  hundleClickDate(date)
                 }}
                 onTouchEnd={e => {
                   e.preventDefault()
-                  setState({ ...state, currentDate: Number(date) })
+                  hundleClickDate(date)
                 }}
               > {date}</p>)
           })}
         </div>
       </div>
       <p className={mod.selected}>
-        {`${state.currentYear}年${state.currentMonth}月${state.currentDate}日が選択されました`}<span role="img" aria-label="face">😎</span>
+        {`${currentYear}年${currentMonth}月${currentDate}日が選択されました`}
       </p>
     </div >
   )
