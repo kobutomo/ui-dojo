@@ -16,25 +16,23 @@ const EditableSlider: React.FC<props> = (props: props) => {
   const [src, setSrc] = useState(initialState)
 
   // propsで画像を受け取っていればEyecatchを表示する
-  const initialEyecatchState =
-    src.length > 0 ?
-      true : false
+  const initialEyecatchState =　src.length > 0
 
   // eyecath表示非表示の状態管理
   const [hasEyecatch, setHasEyecatch] = useState(initialEyecatchState)
   const eyecatch = useRef<HTMLDivElement | null>(null)
 
-  // サムネイルクリック時の処理。
-  // アニメーションのために0.23秒間をあけてる。
-  async function slideImg(src: string) {
-    const current = eyecatch.current
-    if (current) {
-      current.classList.remove(mod.eyecatchActive)
-      await timeout(230)
-      setSrc(src)
-      current.classList.add(mod.eyecatchActive)
-    }
+// サムネイルクリック時の処理。
+// アニメーションのために0.23秒間をあけてる。
+async function slideImg(src: string) {
+  const current = eyecatch.current
+  if (current) {
+    current.classList.remove(mod.eyecatchActive)
+    await timeout(230)
+    setSrc(src)
+    current.classList.add(mod.eyecatchActive)
   }
+}
 
   // 画像削除の処理
   async function removeImage(index: number) {
