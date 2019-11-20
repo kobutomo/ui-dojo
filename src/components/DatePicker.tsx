@@ -6,7 +6,7 @@ const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 const DatePicker: React.FC = () => {
 
-  const [currentYear, currentMonth, currentDate, currentDates, hundleChangeMonth, hundleClickDate] = useCalendar()
+  const [state, hundleChangeMonth, hundleClickDate] = useCalendar()
 
   return (
     <div className={mod.datePicker}>
@@ -27,14 +27,14 @@ const DatePicker: React.FC = () => {
             hundleChangeMonth("next")
           }}
         ><span></span></p>
-        <p className={mod.year}><span>{currentMonth}</span> {currentYear}</p>
+        <p className={mod.year}><span>{state.currentMonth}</span> {state.currentYear}</p>
         <div className={mod.week}>
           {dayOfTheWeek.map((day, index) => <p key={index}>{day}</p>)}
         </div>
         <div className={mod.date}>
-          {currentDates.map((date, index) => {
+          {state.currentDates.map((date, index) => {
             // 日付がcurrentDateと同じだったらクラスを付ける
-            const className = parseInt(date) === currentDate ? mod.current : undefined
+            const className = parseInt(date) === state.currentDate ? mod.current : undefined
 
             return (
               <p
@@ -52,7 +52,7 @@ const DatePicker: React.FC = () => {
         </div>
       </div>
       <p className={mod.selected}>
-        {`${currentYear}年${currentMonth}月${currentDate}日が選択されました`}
+        {`${state.currentYear}年${state.currentMonth}月${state.currentDate}日が選択されました`}
       </p>
     </div >
   )

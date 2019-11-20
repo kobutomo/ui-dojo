@@ -26,7 +26,14 @@ const computeDates = (year: number, month: number) => {
 	return dates
 }
 
-export default function useCalendar(): [number, number, number, string[], (msg: "prev" | "next") => void, (date: string) => void] {
+type State = {
+	currentYear: number;
+	currentMonth: number;
+	currentDate: number;
+	currentDates: string[];
+}
+
+export default function useCalendar(): [State, (msg: "prev" | "next") => void, (date: string) => void] {
 	// memo
 	const initialState = useMemo(() => {
 		const today = new Date(Date.now())
@@ -38,7 +45,7 @@ export default function useCalendar(): [number, number, number, string[], (msg: 
 		}
 		return initialState
 	}, [])
-	const [state, setState] = useState(initialState)
+	const [state, setState] = useState<State>(initialState)
 
 	useEffect(() => {
 		setState({
@@ -90,5 +97,5 @@ export default function useCalendar(): [number, number, number, string[], (msg: 
 	const hundleClickDate = useCallback((date: string) => {
 		setState({ ...state, currentDate: parseInt(date) })
 	}, [state])
-	return [state.currentYear, state.currentMonth, state.currentDate, state.currentDates, hundleChangeMonth, hundleClickDate]
+	return [state, hundleChangeMonth, hundleClickDate]
 }
