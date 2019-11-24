@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cba12f28f02c66778d6c8cd03628f145",
+    "revision": "6a9a870ae6ba02e06fba84ccccb8dd09",
     "url": "/uidojo/index.html"
   },
   {
-    "revision": "e1580efcb47e0acd4717",
-    "url": "/uidojo/static/css/main.6f11a854.chunk.css"
+    "revision": "1bfecb8dfb07ef6f03da",
+    "url": "/uidojo/static/css/main.071885b0.chunk.css"
   },
   {
-    "revision": "bb441b5a3dc40efa653b",
-    "url": "/uidojo/static/js/2.1e3e13c3.chunk.js"
+    "revision": "51f8152ef973dd0ef569",
+    "url": "/uidojo/static/js/2.8dfc88d2.chunk.js"
   },
   {
-    "revision": "e1580efcb47e0acd4717",
-    "url": "/uidojo/static/js/main.7d2252ad.chunk.js"
+    "revision": "1bfecb8dfb07ef6f03da",
+    "url": "/uidojo/static/js/main.5c5cbdf7.chunk.js"
   },
   {
     "revision": "0f54592b7a2e40c349b4",
@@ -34,6 +34,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "afac0cf8986bcac379dcdd2cc13501bd",
     "url": "/uidojo/static/media/FiraCode-Regular.afac0cf8.ttf"
+  },
+  {
+    "revision": "d8d7c0e50ce711f0834220b771cc03bd",
+    "url": "/uidojo/static/media/creditcard.d8d7c0e5.jpg"
   },
   {
     "revision": "86dd7cb77e5a4437586716eb82f9c5f8",
