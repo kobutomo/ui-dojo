@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react"
+import React, { useState, useMemo, useCallback, useRef } from "react"
 import styled, { css } from "styled-components"
 import cardImg from "../assets/creditcard.jpg"
 
@@ -8,6 +8,22 @@ type Props = {
 type Focus = 0 | 1 | 2 | 3 | 4
 
 const initialNumber = "################".split("")
+
+type Ref = React.RefObject<HTMLLabelElement> |
+	React.RefObject<HTMLDivElement>
+
+const getFocusPos = (ref: Ref) => {
+	return {
+		width: ref.current ?
+			ref.current.clientWidth :
+			"100%",
+		height: ref.current ?
+			ref.current.clientHeight :
+			"100%",
+		transform: `translate(${ref.current ? ref.current.offsetLeft : 0}px, ${ref.current ? ref.current.offsetTop : 0}px)`,
+		opacity: 1
+	}
+}
 
 const CardForm: React.FC<Props> = props => {
 	const [cardNumber, setCardNumber] = useState<string>("")
@@ -19,11 +35,35 @@ const CardForm: React.FC<Props> = props => {
 	0: なし, 1: 番号 2:名義 3:有効期限 4:CVV */
 	const [focusFor, setFocusFor] = useState<Focus>(0)
 
+	const numberRef = useRef<HTMLLabelElement>(null)
+	const holderRef = useRef<HTMLLabelElement>(null)
+	const expiresRef = useRef<HTMLDivElement>(null)
+
+	const focusStyle = useMemo(() => {
+		switch (focusFor) {
+			case 0:
+				return {
+					width: "100%",
+					height: "100%",
+					opacity: 0
+				}
+			case 1:
+				return getFocusPos(numberRef)
+			case 2:
+				return getFocusPos(holderRef)
+			case 3:
+				return getFocusPos(expiresRef)
+
+			default:
+				break;
+		}
+	}, [focusFor])
+
 	const hash = useMemo(() => {
 		return initialNumber.map((char, i) => {
 			const num = i + 1
 			if (num <= cardNumber.length) return undefined
-			if (num % 4 === 0) return (
+			if (num % 4 === 0 && num !== 16) return (
 				<span><div>{char}</div><div></div></span>
 			)
 			return <span><div>{char}</div></span>
@@ -35,7 +75,7 @@ const CardForm: React.FC<Props> = props => {
 		return cardNumber.split("").map((char, i) => {
 			const num = i + 1
 			if (num > 4 && num < 13) char = "*"
-			if (num % 4 === 0) return (
+			if (num % 4 === 0 && num !== 16) return (
 				<span><div>{char}</div><div></div></span>
 			)
 			return <span><div>{char}</div></span>
@@ -44,8 +84,6 @@ const CardForm: React.FC<Props> = props => {
 	}, [cardNumber])
 
 	const hundleChangeNumber = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		// e.preventDefault()
-		console.log()
 		if (e.target.value.length > 16 || (/[^0-9]/).test(e.target.value)) {
 			return
 		}
@@ -58,7 +96,7 @@ const CardForm: React.FC<Props> = props => {
 				<div className="cardWrapper">
 					<div className="card" onClick={() => {
 						// setIsFrontSide(prev => !prev)
-						setCardNumber(prev => prev + "1")
+						// setCardNumber(prev => prev + "1")
 					}}
 					>
 						<div
@@ -68,16 +106,27 @@ const CardForm: React.FC<Props> = props => {
 							<img src={cardImg} alt="" />
 						</div>
 						<div className="card-content -front">
-							<label htmlFor="cardNumber" className="card-content__number focus">
+							<label
+								htmlFor="cardNumber"
+								className="card-content__number -focus"
+								ref={numberRef}
+							>
 								{number}
 								{hash}
 							</label>
 							<div className="card-content__bottom">
-								<label htmlFor="name" className="card-content__holder focus">
+								<label
+									htmlFor="holder"
+									className="card-content__holder -focus"
+									ref={holderRef}
+								>
 									<p className="card-content__txt">Card holder</p>
 									<p className="card-content__name">Full name</p>
 								</label>
-								<div className="card-content__date focus">
+								<div
+									className="card-content__date -focus"
+									ref={expiresRef}
+								>
 									<p className="card-content__txt">Expires</p>
 									<label htmlFor="month" className="card-content__month">
 										MM</label>/<label htmlFor="year" className="card-content__year">YY</label>
@@ -87,6 +136,9 @@ const CardForm: React.FC<Props> = props => {
 							{/* bottom */}
 						</div>
 						{/* cardcontent */}
+						<Focus
+							style={focusStyle}
+						/>
 					</div>
 					{/* 表 */}
 					<div className="card -back">
@@ -103,9 +155,18 @@ const CardForm: React.FC<Props> = props => {
 			<Form>
 				<div className="form-number">
 					<p className="form__title">Card Number</p>
-					<input type="text"
+					<input type="text" id="cardNumber"
 						onChange={e => hundleChangeNumber(e)}
+						onFocus={e => setFocusFor(1)}
+						onBlur={e => setFocusFor(0)}
 						value={cardNumber}
+					/>
+				</div>
+				<div className="form-holder">
+					<p className="form__title">Card Holder</p>
+					<input type="text" id="holder"
+						onFocus={e => setFocusFor(2)}
+						onBlur={e => setFocusFor(0)}
 					/>
 				</div>
 			</Form>
@@ -113,20 +174,30 @@ const CardForm: React.FC<Props> = props => {
 	)
 }
 
+const Focus = styled.div`
+position: absolute;
+box-sizing: border-box;
+transition: all 0.35s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+border: 2px solid rgba(255, 255, 255, 0.65);
+border-radius: 5px;
+left: 0;
+top: 0;
+z-index:1;
+`
+
 type CardProps = {
 	isFrontSide: boolean
 }
 const Card = styled.div<CardProps>`
-.focus{
-	/* border: 2px solid #fff; */
+position: relative;
+width: 430px;
+height: 270px;
+margin: 0 auto;
+.-focus{
 	border-radius: 5px;
 	padding: 10px;
 }
 .cardWrapper{
-	position: relative;
-	width: 430px;
-	height: 270px;
-	margin: 0 auto;
 }
 .card {
 	position: absolute;
@@ -170,6 +241,7 @@ const Card = styled.div<CardProps>`
 }
 .card-content{
 	position: absolute;
+	z-index:2;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -179,11 +251,11 @@ const Card = styled.div<CardProps>`
 	color: #fff;
 	text-shadow: 7px 6px 10px rgba(14, 42, 90, 0.8);
 	&__number{
+		display: inline-block;
 		margin-bottom: 18px;
-		display: block;
 		div{
 			display: inline-block;
-			width: 0.66em;
+			width: 0.7em;
 			font-size: 2.5rem;
 		}
 	}
@@ -227,6 +299,15 @@ const Form = styled.div`
 	margin-top: -100px;
 	padding: 50px;
 	padding-top: 200px;
+	.form__title{
+		font-size: 1.4rem;
+		margin-bottom: 5px;
+		font-weight: 500;
+		color: #1a3b5d;
+		width: 100%;
+		display: block;
+		user-select: none;
+	}
 	input[type="text"]{
 		width: 100%;
 		height: 50px;
@@ -239,6 +320,13 @@ const Form = styled.div`
 		background: none;
 		color: #1a3b5d;
 		box-sizing: border-box;
+	}
+	input[type="text"]:focus{
+		border: 1px solid #4fa7ff;
+	box-shadow: 0 10px 20px 0 rgba(14, 42, 90, 0.2);
+	}
+	.form-holder{
+		margin-top: 20px;
 	}
 `
 
