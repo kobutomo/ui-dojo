@@ -11,7 +11,6 @@ import Tabs from '../components/Tabs'
 import DatePicker from '../components/DatePicker'
 import TwitterClone from '../components/TwitterClone'
 import Tetris from '../components/Tetris'
-import CardForm from '../components/CardForm'
 
 const Home: React.FC = () => {
   type state = {
