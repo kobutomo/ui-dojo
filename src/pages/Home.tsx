@@ -11,6 +11,7 @@ import Tabs from '../components/Tabs'
 import DatePicker from '../components/DatePicker'
 import TwitterClone from '../components/TwitterClone'
 import Tetris from '../components/Tetris'
+import CardForm from "../components/CardForm"
 
 const Home: React.FC = () => {
   type state = {
@@ -35,6 +36,8 @@ const Home: React.FC = () => {
 
   return (
     <div id="container">
+      <h2>クレジットカードフォーム</h2>
+      <CardForm />
       {/* <h2>テトリス</h2>
       <Tetris
         fieldHeight={20}
