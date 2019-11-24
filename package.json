@@ -8,14 +8,14 @@
     "@types/node": "12.7.3",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
-    "@types/styled-components": "^4.1.19",
+    "@types/styled-components": "^4.4.0",
     "draft-js": "^0.11.1",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.2.0",
-    "styled-components": "^4.4.0",
-    "typescript": "3.6.2"
+    "styled-components": "^4.4.1",
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
