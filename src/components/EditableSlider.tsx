@@ -7,86 +7,25 @@ const timeout = (ms: number): Promise<void> => {
 
 type props = {
   images: string[],
-  setState: (value: string[]) => void
+  setImages: (value: string[]) => void,
+  src: string,
+  slideImage: (next: string, current?: HTMLDivElement | undefined) => Promise<void>,
+  removeImage: (index: number) => Promise<void>,
+  setImage: (files: FileList) => void
 }
 
 const EditableSlider: React.FC<props> = (props: props) => {
   // FIXME: eyecatchの状態管理は下のhasEyecatchと統一したい
-  const initialState = props.images[0] || ""
-  const [src, setSrc] = useState(initialState)
-
-  // propsで画像を受け取っていればEyecatchを表示する
-  const initialEyecatchState =
-    src.length > 0 ?
-      true : false
-
-  // eyecath表示非表示の状態管理
-  const [hasEyecatch, setHasEyecatch] = useState(initialEyecatchState)
+  
+  const hasEyecatch = props.images.length > 0
   const eyecatch = useRef<HTMLDivElement | null>(null)
-
-  // サムネイルクリック時の処理。
-  // アニメーションのために0.23秒間をあけてる。
-  async function slideImg(src: string) {
-    const current = eyecatch.current
-    if (current) {
-      current.classList.remove(mod.eyecatchActive)
-      await timeout(230)
-      setSrc(src)
-      current.classList.add(mod.eyecatchActive)
-    }
-  }
-
-  // 画像削除の処理
-  async function removeImage(index: number) {
-    // propsのコピーをとってそっちを編集する
-    let copyImages = props.images.concat()
-    copyImages.splice(index, 1)
-    // setStateは非同期処理っぽいのでawaitなしだと
-    // 後述のprops.images[newIndex]の値が意図したものにならない
-    await props.setState(copyImages)
-
-    // 画像を削除した後に表示させる画像を指定する。
-    let newIndex: number
-    if (index === 0) {
-      newIndex = 1
-    } else {
-      newIndex = index - 1
-    }
-
-    if (copyImages.length === 0) {
-      setHasEyecatch(false)
-    }
-    else {
-      slideImg(props.images[newIndex])
-    }
-  }
-
-  // input:fileの処理
-  const setImage = (files: FileList) => {
-    let imagesCopy = props.images.concat()
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader()
-      const file = files[i]
-      reader.onload = function () {
-        if (this.result) {
-          imagesCopy.push(this.result.toString())
-          props.setState(imagesCopy)
-          // 最初のアップロードの場合(imagesCopy.length === 1)
-          //アイキャッチをアップロードした画像に変更
-          if (imagesCopy.length === 1) {
-            slideImg(this.result.toString())
-            setHasEyecatch(true)
-          }
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-
+  
+  
+  // propsで画像を受け取っていればEyecatchを表示する
   const showEyecatch = () => {
     if (hasEyecatch) {
       return (
-        <img src={src} alt="" />
+        <img src={props.src} alt="" />
       )
     }
   }
@@ -109,7 +48,7 @@ const EditableSlider: React.FC<props> = (props: props) => {
           >
             <input type="file"
               onChange={e => {
-                if (e.target.files) setImage(e.target.files)
+                if (e.target.files) props.setImage(e.target.files)
               }}
             />
             <span>画像を追加</span>
@@ -127,16 +66,16 @@ const EditableSlider: React.FC<props> = (props: props) => {
       <ul className={mod.thumbnails}>
         {props.images.map((img, index) => {
           return (
-            <li className={img === src ? mod.thumbnailActive : undefined} key={img} onTouchEnd={(e) => { e.preventDefault(); slideImg(img) }} onClick={() => { slideImg(img) }}>
+            <li className={img === props.src ? mod.thumbnailActive : undefined} key={img} onTouchEnd={(e) => { e.preventDefault(); props.slideImage(img) }} onClick={() => { props.slideImage(img) }}>
               <img src={img} alt="" />
               <div
                 className={mod.remove}
                 onTouchEnd={e => {
                   e.preventDefault()
-                  removeImage(index)
+                  props.removeImage(index)
                 }}
                 onClick={() => {
-                  removeImage(index)
+                  props.removeImage(index)
                 }}
               >
               </div>
