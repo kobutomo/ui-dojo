@@ -12,6 +12,7 @@ import DatePicker from '../components/DatePicker'
 import TwitterClone from '../components/TwitterClone'
 import Tetris from '../components/Tetris'
 import CardForm from "../components/CardForm"
+import useSlider from "../hooks/useSlider"
 
 const Home: React.FC = () => {
   type state = {
@@ -28,6 +29,7 @@ const Home: React.FC = () => {
     setState({ ...state, rating: rating })
   }
 
+  const [images, setImages, src, slideImage, removeImage, setImage] = useSlider()
   const changeImages = (images: string[]) => {
     setState({ ...state, images: images })
   }
@@ -37,8 +39,8 @@ const Home: React.FC = () => {
   return (
     <div id="container">
       <h2>クレジットカードフォーム</h2>
-      <p style={{marginBottom: 30}}>
-      参考: <a href="https://qiita.com/baby-degu/items/d68e52a0727248ba2750" target="_blank" rel="noopener noreferrer" style={{ color: "#3366ff", textDecoration: "underline" }}>フロントエンドのコーディング課題６選-このフロントエンドの課題、実装できますか？</a><br/><br/>未完成です。<br/>Vueで書かれたものをReactで再実装。<br/>なお、本来クレジットカードのフォームを自前で用意するのはセキュリティの観点からNGとのこと。
+      <p style={{ marginBottom: 30 }}>
+        参考: <a href="https://qiita.com/baby-degu/items/d68e52a0727248ba2750" target="_blank" rel="noopener noreferrer" style={{ color: "#3366ff", textDecoration: "underline" }}>フロントエンドのコーディング課題６選-このフロントエンドの課題、実装できますか？</a><br /><br />未完成です。<br />Vueで書かれたものをReactで再実装。<br />なお、本来クレジットカードのフォームを自前で用意するのはセキュリティの観点からNGとのこと。
       </p>
       <CardForm />
       {/* <h2>テトリス</h2>
@@ -53,7 +55,11 @@ const Home: React.FC = () => {
       <h2>画像ギャラリー(編集用)</h2>
       <EditableSlider
         images={state.images}
-        setState={changeImages}
+        setImages={setImages}
+        slideImage={slideImage}
+        removeImage={removeImage}
+        setImage={setImage}
+        src={src}
       />
       <h2>タブ切り替え</h2>
       <Tabs />
