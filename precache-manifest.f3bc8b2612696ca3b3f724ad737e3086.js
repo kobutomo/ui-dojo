@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6a9a870ae6ba02e06fba84ccccb8dd09",
+    "revision": "bedb78a0a6220220aed0dce3fd34bd54",
     "url": "/uidojo/index.html"
   },
   {
-    "revision": "1bfecb8dfb07ef6f03da",
+    "revision": "79e21a2691bde8e0cba6",
     "url": "/uidojo/static/css/main.071885b0.chunk.css"
   },
   {
-    "revision": "51f8152ef973dd0ef569",
-    "url": "/uidojo/static/js/2.8dfc88d2.chunk.js"
+    "revision": "e92dedd096ab79ff5b7d",
+    "url": "/uidojo/static/js/2.0d52de55.chunk.js"
   },
   {
-    "revision": "1bfecb8dfb07ef6f03da",
-    "url": "/uidojo/static/js/main.5c5cbdf7.chunk.js"
+    "revision": "79e21a2691bde8e0cba6",
+    "url": "/uidojo/static/js/main.d3aaeca7.chunk.js"
   },
   {
     "revision": "0f54592b7a2e40c349b4",
@@ -38,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "d8d7c0e50ce711f0834220b771cc03bd",
     "url": "/uidojo/static/media/creditcard.d8d7c0e5.jpg"
+  },
+  {
+    "revision": "190f921f664a9be1cd0de693c1249350",
+    "url": "/uidojo/static/media/ico_arrow.190f921f.png"
   },
   {
     "revision": "86dd7cb77e5a4437586716eb82f9c5f8",
