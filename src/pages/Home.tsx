@@ -37,13 +37,16 @@ const Home: React.FC = () => {
   return (
     <div id="container">
       <h2>クレジットカードフォーム</h2>
+      <p style={{marginBottom: 30}}>
+      参考: <a href="https://qiita.com/baby-degu/items/d68e52a0727248ba2750" style={{ color: "#3366ff", textDecoration: "underline" }}>フロントエンドのコーディング課題６選-このフロントエンドの課題、実装できますか？</a><br/><br/>未完成です。<br/>Vueで書かれたものをReactで再実装。<br/>なお、本来クレジットカードのフォームを自前で用意するのはセキュリティの観点からNGとのこと。
+      </p>
       <CardForm />
       {/* <h2>テトリス</h2>
       <Tetris
         fieldHeight={20}
         fieldWidth={10}
       /> */}
-      <h2>ツイッターのエディタークローン<br/>（メンション、ハッシュタグなど対応）</h2>
+      <h2>ツイッターのエディタークローン<br />（メンション、ハッシュタグなど対応）</h2>
       <TwitterClone />
       <h2>画像ギャラリー(readonly)</h2>
       <Slider images={[slider01, slider02, slider03]} />
