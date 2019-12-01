@@ -40,6 +40,7 @@ const CardForm: React.FC<Props> = props => {
   const [cardNumber, setCardNumber] = useState<string>("")
   const [holder, setHolder] = useState("")
   const [expirationDate, setExpirationDate] = useState({ month: "", year: "" })
+  const [cvv, setCvv] = useState<number>(NaN)
   const [isFrontSide, setIsFrontSide] = useState(true)
 
   /* フォーカスについて
@@ -86,6 +87,11 @@ const CardForm: React.FC<Props> = props => {
   const hundleChangeYear = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setExpirationDate({ ...expirationDate, year: e.target.value })
   }, [expirationDate])
+
+  const hundleChangeCvv = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 4 || (/[^0-9]/).test(e.target.value)) return
+    setCvv(parseInt(e.target.value))
+  }, [])
 
   return (
     <div>
@@ -144,11 +150,12 @@ const CardForm: React.FC<Props> = props => {
           </div>
           {/* 表 */}
           <div className="card -back">
-            <div
-              className="img"
-              onClick={() => setIsFrontSide(prev => !prev)}
-            >
+            <div className="img">
               <img src={cardImg} alt="" />
+            </div>
+            <div className="card-content -back">
+              <p className="card-content__txt -cvv">CVV</p>
+              <p className="card-content__cvv">{!isNaN(cvv) ? cvv.toString().replace(/./g, "*") : ""}</p>
             </div>
           </div>
           {/* 裏 */}
@@ -205,10 +212,10 @@ const CardForm: React.FC<Props> = props => {
           <div className="form-cvv">
             <p className="form__title">CVV</p>
             <input type="text" id="cardNumber"
-              // onChange={e => hundleChangeNumber(e)}
+              onChange={e => hundleChangeCvv(e)}
               onFocus={() => setIsFrontSide(false)}
               onBlur={() => setIsFrontSide(true)}
-            // value={cardNumber}
+              value={!isNaN(cvv) ? cvv.toString() : ""}
             />
           </div>
         </div>
@@ -301,6 +308,13 @@ margin: 0 auto;
   &__txt{
     font-size: 1.3rem;
     opacity: 0.7;
+    &.-cvv{
+      text-align: right;
+      padding-right: 10px;
+      padding-bottom: 0px;
+      font-size: 1.4rem;
+      opacity: 1;
+    }
   }
   &__name{
     font-size: 1.8rem;
@@ -328,6 +342,21 @@ margin: 0 auto;
     display: block;
     font-size: 1.8rem;
     text-transform: uppercase;
+  }
+  &__cvv {
+    background-color: #fff;
+    color: #1a3b5d;
+    text-shadow: none;
+    height: 40px;
+    border-radius: 5px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 1.3rem;
+    line-height: 1;
   }
 }
 `
