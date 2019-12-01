@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/uidojo/static/css/main.071885b0.chunk.css",
-    "main.js": "/uidojo/static/js/main.1644ef13.chunk.js",
-    "main.js.map": "/uidojo/static/js/main.1644ef13.chunk.js.map",
+    "main.js": "/uidojo/static/js/main.85cd3ced.chunk.js",
+    "main.js.map": "/uidojo/static/js/main.85cd3ced.chunk.js.map",
     "runtime-main.js": "/uidojo/static/js/runtime-main.d44048c7.js",
     "runtime-main.js.map": "/uidojo/static/js/runtime-main.d44048c7.js.map",
     "static/js/2.b6c4c2c0.chunk.js": "/uidojo/static/js/2.b6c4c2c0.chunk.js",
     "static/js/2.b6c4c2c0.chunk.js.map": "/uidojo/static/js/2.b6c4c2c0.chunk.js.map",
     "index.html": "/uidojo/index.html",
-    "precache-manifest.7de2faeb1a20fe84fe7b6d4da29c7818.js": "/uidojo/precache-manifest.7de2faeb1a20fe84fe7b6d4da29c7818.js",
+    "precache-manifest.2f267da2512d7da1520128229004ac33.js": "/uidojo/precache-manifest.2f267da2512d7da1520128229004ac33.js",
     "service-worker.js": "/uidojo/service-worker.js",
     "static/css/main.071885b0.chunk.css.map": "/uidojo/static/css/main.071885b0.chunk.css.map",
     "static/media/reboot.css": "/uidojo/static/media/FiraCode-Regular.afac0cf8.ttf",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.d44048c7.js",
     "static/js/2.b6c4c2c0.chunk.js",
     "static/css/main.071885b0.chunk.css",
-    "static/js/main.1644ef13.chunk.js"
+    "static/js/main.85cd3ced.chunk.js"
   ]
 }
